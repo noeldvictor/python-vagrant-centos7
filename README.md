@@ -42,6 +42,14 @@ $ sudo dnf install vagrant
 $ sudo dnf install VirtualBox
 ```
 
+**Ubuntu 18 and up**
+```
+$ sudo apt install vagrant
+$ sudo apt install virtualbox
+```
+
+
+
 ## Additional Roles Not Installed by Default
 
 The Ansible playbook for the installation is located at `provisioning/vagrant_playbook.yml`. Several additional roles are commented out that can be added, including `elastic_search`, `redis`, `httpd` (with `httpd_mod_wsgi`), `nodejs`, and a `yum_update` role. These are not included by default, but can be uncommented if you wish you use them.
