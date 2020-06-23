@@ -10,8 +10,8 @@
     state: absent
 - name: Install git, vim, vind-utils, and dependencies for pip installs with yum
   yum: 
-    name: 
-      - git2u
+    name:
+      - git
       - vim
       - bind-utils
       - zlib-devel
