@@ -3,7 +3,7 @@
   yum:
     name: 
       - redis32u
-      - python36u-redis
+      - python38u-redis
     state: present
 
 - name: Make sure redis is started at boot.

@@ -1,38 +1,35 @@
 ---
 - name: Install PostgreSQL YUM repository
   yum:
-    name: https://download.postgresql.org/pub/repos/yum/12/redhat/rhel-7.12-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+    name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
     state: present
 
-- name: Install PostgreSQL 10 Server
+- name: Install PostgreSQL 12 Server
   yum:
-    name: postgresql10-server
+    name: postgresql12-server
     state: present
 
-- name: Install PostgreSQL 10 devel package
+
+
+- name: Install PostgreSQL 12 contrib package
   yum:
-    name: postgresql10-devel
+    name: postgresql12-contrib
     state: present
 
-- name: Install PostgreSQL 10 contrib package
-  yum:
-    name: postgresql10-contrib
-    state: present
-
-- name: Initialize PostgreSQL 10
-  command: /usr/pgsql-10/bin/postgresql-10-setup initdb creates=/var/lib/pgsql/10/initdb.log
+- name: Initialize PostgreSQL 12
+  command: /usr/pgsql-12/bin/postgresql-12-setup initdb creates=/var/lib/pgsql/12/initdb.log
   become: true
   become_user: root
 
 - name: Create a symbolic link to pg_config binary so pip installs of psycopg2 work
   file:
-    src: /usr/pgsql-10/bin/pg_config
+    src: /usr/pgsql-12/bin/pg_config
     dest: /usr/bin/pg_config
     state: link
 
-- name: Ensure PostgreSQL 10 service is running
+- name: Ensure PostgreSQL 12 service is running
   service:
-    name: postgresql-10
+    name: postgresql-12
     state: started
     enabled: yes
 
